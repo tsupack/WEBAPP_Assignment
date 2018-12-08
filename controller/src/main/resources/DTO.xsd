@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="assignment" xmlns="assignment" elementFormDefault="qualified">
+
+    <xs:complexType name="filterType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" default="null"/>
+            <xs:element name="location" type="xs:string" default="null"/>
+            <xs:element name="company" type="xs:string" default="null"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="applicantType">
+        <xs:sequence>
+            <xs:element name="applicantID" type="xs:int"/>
+            <xs:element name="applicantName" type="xs:string"/>
+            <xs:element name="applicantEmail" type="xs:string"/>
+            <xs:element name="applicantPhone" type="xs:string"/>
+            <xs:element name="applicantAge" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="jobType">
+        <xs:sequence>
+            <xs:element name="jobID" type="xs:int"/>
+            <xs:element name="jobName" type="xs:string"/>
+            <xs:element name="jobLocation" type="xs:string"/>
+            <xs:element name="jobCompany" type="xs:string"/>
+            <xs:element name="jobDescription" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="applicationType">
+        <xs:sequence>
+            <xs:element name="applicationID" type="xs:int"/>
+            <xs:element name="job" type="jobType"/>
+            <xs:element name="applicant" type="applicantType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="job" type="jobType"/>
+    <xs:element name="applicant" type="applicantType"/>
+    <xs:element name="application" type="applicationType"/>
+    <xs:element name="filter" type="filterType"/>
+</xs:schema>

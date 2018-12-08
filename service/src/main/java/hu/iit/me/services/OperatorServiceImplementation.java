@@ -1,5 +1,6 @@
-package hu.iit.me;
+package hu.iit.me.services;
 
+import hu.iit.me.dao.DaoInterface;
 import hu.iit.me.exception.EmptyFieldException;
 import hu.iit.me.exception.InvalidIDException;
 import hu.iit.me.service.OperatorServiceInterface;
@@ -10,9 +11,9 @@ import java.util.ArrayList;
 
 @Service
 public class OperatorServiceImplementation implements OperatorServiceInterface {
-    private DaoImplementation data;
+    private DaoInterface data;
 
-    public OperatorServiceImplementation(DaoImplementation data){
+    public OperatorServiceImplementation(DaoInterface data){
         this.data = data;
     }
 

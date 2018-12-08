@@ -1,5 +1,6 @@
-package hu.iit.me;
+package hu.iit.me.services;
 
+import hu.iit.me.dao.DaoInterface;
 import hu.iit.me.service.ApplicantServiceInterface;
 import hu.iit.me.model.*;
 import org.springframework.stereotype.Service;
@@ -8,9 +9,9 @@ import java.util.ArrayList;
 
 @Service
 public class ApplicantServiceImplementation implements ApplicantServiceInterface {
-    private DaoImplementation data;
+    private DaoInterface data;
 
-    public ApplicantServiceImplementation(DaoImplementation data){
+    public ApplicantServiceImplementation(DaoInterface data){
         this.data = data;
     }
 

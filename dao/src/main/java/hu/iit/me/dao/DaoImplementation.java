@@ -1,6 +1,5 @@
-package hu.iit.me;
+package hu.iit.me.dao;
 
-import hu.iit.me.dao.DaoInterface;
 import hu.iit.me.exception.*;
 import hu.iit.me.model.*;
 
