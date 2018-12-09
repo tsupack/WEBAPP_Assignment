@@ -17,27 +17,28 @@ import java.util.ArrayList;
 public class ApplicantServiceController {
     private ApplicantServiceImplementation applicantService;
 
-    public ApplicantServiceController (ApplicantServiceImplementation applicantService){
+    public ApplicantServiceController(ApplicantServiceImplementation applicantService) {
         this.applicantService = applicantService;
     }
 
     @RequestMapping(value = "/listAllJob", method = RequestMethod.GET)
     @ResponseBody
-    public ArrayList<JobType> listAllJob(){return DTOConverter.marshalJobList(applicantService.getAllJobs());}
+    public ArrayList<JobType> listAllJob() {
+        return DTOConverter.marshalJobList(applicantService.getAllJobs());
+    }
 
 
     @RequestMapping(value = "/listMyApplications", method = RequestMethod.POST)
     @ResponseBody
-    public ArrayList<ApplicationType> listMyApplication(@RequestBody ApplicantType applicantType){
+    public ArrayList<ApplicationType> listMyApplication(@RequestBody ApplicantType applicantType) {
         return DTOConverter.marshalApplicationList(applicantService.getMyApplications(applicantType.getApplicantName()));
     }
 
 
     @RequestMapping(value = "filterApplicationsBy", method = RequestMethod.POST)
     @ResponseBody
-    public ArrayList<ApplicationType> filterApplicationBy(@RequestBody FilterType filterType){
-        return DTOConverter.marshalApplicationList(applicantService.getMyApplicationsBy(filterType.getName(),filterType.getLocation(),filterType.getCompany());
-
+    public ArrayList<ApplicationType> filterApplicationBy(@RequestBody FilterType filterType) {
+        return DTOConverter.marshalApplicationList(applicantService.getMyApplicationsBy(filterType.getName(), filterType.getLocation(), filterType.getCompany()));
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

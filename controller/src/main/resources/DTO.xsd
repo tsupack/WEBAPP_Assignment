@@ -15,7 +15,7 @@
             <xs:element name="applicantID" type="xs:int"/>
             <xs:element name="applicantName" type="xs:string"/>
             <xs:element name="applicantEmail" type="xs:string"/>
-            <xs:element name="applicantPhone" type="xs:string"/>
+            <xs:element name="applicantPhoneNumber" type="xs:string"/>
             <xs:element name="applicantAge" type="xs:int"/>
         </xs:sequence>
     </xs:complexType>
