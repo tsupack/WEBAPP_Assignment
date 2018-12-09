@@ -4,7 +4,7 @@ import hu.iit.me.dto.ApplicationType;
 import hu.iit.me.dto.JobType;
 import hu.iit.me.exception.EmptyFieldException;
 import hu.iit.me.exception.InvalidIDException;
-import hu.iit.me.services.OperatorServiceImplementation;
+import hu.iit.me.service.OperatorServiceInterface;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +13,10 @@ import java.util.ArrayList;
 
 @Controller
 @RequestMapping("/operator/")
-public class OperatorServiceConroller {
-    private OperatorServiceImplementation operatorService;
+public class OperatorServiceController {
+    private OperatorServiceInterface operatorService;
 
-    public OperatorServiceConroller (OperatorServiceImplementation operatorService){
+    public OperatorServiceController(OperatorServiceInterface operatorService){
         this.operatorService = operatorService;
     }
 
