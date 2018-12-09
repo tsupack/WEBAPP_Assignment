@@ -1,9 +1,7 @@
 package hu.iit.me.controller;
 
-import hu.iit.me.dto.ApplicantType;
 import hu.iit.me.dto.ApplicationType;
 import hu.iit.me.dto.JobType;
-import hu.iit.me.dto.FilterType;
 import hu.iit.me.exception.EmptyFieldException;
 import hu.iit.me.exception.InvalidIDException;
 import hu.iit.me.services.OperatorServiceImplementation;
