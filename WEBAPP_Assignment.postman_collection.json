@@ -32,7 +32,38 @@
 			"response": []
 		},
 		{
-			"name": "applicant/listMyApplications",
+			"name": "applicant/listMyApplicationByName",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<assig:job xmlns:assig=\"assignment\">\n   <assig:applicantName>Kiss_Istvan</assig:applicantName>\n</assig:job>"
+				},
+				"url": {
+					"raw": "http://localhost:8082/applicant/listMyApplicationByName",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"applicant",
+						"listMyApplicationByName"
+					]
+				},
+				"description": "Should list the applications for a given name."
+			},
+			"response": []
+		},
+		{
+			"name": "applicant/ListMyApplicationByJobName",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -44,10 +75,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "<assig:job xmlns:assig=\"assignment\">\n   <assig:applicantName>Kiss_Istvan</assig:applicantName>\n</assig:job>"
+					"raw": "<assig:job xmlns:assig=\"assignment\">\n   <assig:jobName>IP_technician</assig:jobName>\n</assig:job>"
 				},
 				"url": {
-					"raw": "http://localhost:8082/applicant/listMyApplications",
+					"raw": "http://localhost:8082/applicant/listMyApplicationByJobName",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -55,10 +86,72 @@
 					"port": "8082",
 					"path": [
 						"applicant",
-						"listMyApplications"
+						"listMyApplicationByJobName"
 					]
 				},
-				"description": "Should list the applications for a given name"
+				"description": "Should list all applications by a given job name."
+			},
+			"response": []
+		},
+		{
+			"name": "applicant/ListMyApplicationByJobLocation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<assig:job xmlns:assig=\"assignment\">\n   <assig:jobLocation>Budapest</assig:jobLocation>\n</assig:job>"
+				},
+				"url": {
+					"raw": "http://localhost:8082/applicant/listMyApplicationByJobLocation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"applicant",
+						"listMyApplicationByJobLocation"
+					]
+				},
+				"description": "Should list all applications by a given job location."
+			},
+			"response": []
+		},
+		{
+			"name": "applicant/ListMyApplicationByCompany",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<assig:job xmlns:assig=\"assignment\">\n   <assig:jobCompany>Magyar_Telekom</assig:jobCompany>\n</assig:job>"
+				},
+				"url": {
+					"raw": "http://localhost:8082/applicant/listMyApplicationByCompany",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"applicant",
+						"listMyApplicationByCompany"
+					]
+				},
+				"description": "Should list all applications by a given company."
 			},
 			"response": []
 		},
@@ -88,7 +181,7 @@
 			"response": []
 		},
 		{
-			"name": "operator/addjob",
+			"name": "operator/addJob",
 			"request": {
 				"method": "POST",
 				"header": [

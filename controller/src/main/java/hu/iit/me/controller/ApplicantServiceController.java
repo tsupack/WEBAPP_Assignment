@@ -26,10 +26,28 @@ public class ApplicantServiceController {
         return DTOConverter.marshalJobList(applicantService.getAllJobs());
     }
 
-    @RequestMapping(value = "/listMyApplications", method = RequestMethod.POST)
+    @RequestMapping(value = "/listMyApplicationByName", method = RequestMethod.POST)
     @ResponseBody
-    public ArrayList<ApplicationType> listMyApplication(@RequestBody ApplicantType applicantType) {
-        return DTOConverter.marshalApplicationList(applicantService.getMyApplications(applicantType.getApplicantName()));
+    public ArrayList<ApplicationType> listMyApplicationByName(@RequestBody ApplicantType applicantType) {
+        return DTOConverter.marshalApplicationList(applicantService.getMyApplicationsByName(applicantType.getApplicantName()));
+    }
+
+    @RequestMapping(value = "/listMyApplicationByJobName", method = RequestMethod.POST)
+    @ResponseBody
+    public ArrayList<ApplicationType> listMyApplicationByJobName(@RequestBody JobType jobType) {
+        return DTOConverter.marshalApplicationList(applicantService.getMyApplicationsByJobName(jobType.getJobName()));
+    }
+
+    @RequestMapping(value = "/listMyApplicationByJobLocation", method = RequestMethod.POST)
+    @ResponseBody
+    public ArrayList<ApplicationType> listMyApplicationByJobLocation(@RequestBody JobType jobType) {
+        return DTOConverter.marshalApplicationList(applicantService.getMyApplicationsByJobLocation(jobType.getJobLocation()));
+    }
+
+    @RequestMapping(value = "/listMyApplicationByCompany", method = RequestMethod.POST)
+    @ResponseBody
+    public ArrayList<ApplicationType> listMyApplicationByCompany(@RequestBody JobType jobType) {
+        return DTOConverter.marshalApplicationList(applicantService.getMyApplicationsByCompany(jobType.getJobCompany()));
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

@@ -7,5 +7,8 @@ import java.util.ArrayList;
 
 public interface ApplicantServiceInterface {
     ArrayList<Job> getAllJobs();
-    ArrayList<Application> getMyApplications(String name);
+    ArrayList<Application> getMyApplicationsByName(String applicantName);
+    ArrayList<Application> getMyApplicationsByJobName(String jobName);
+    ArrayList<Application> getMyApplicationsByJobLocation(String jobLocation);
+    ArrayList<Application> getMyApplicationsByCompany(String company);
 }

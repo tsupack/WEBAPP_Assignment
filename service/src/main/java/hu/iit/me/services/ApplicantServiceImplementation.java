@@ -21,10 +21,43 @@ public class ApplicantServiceImplementation implements ApplicantServiceInterface
     }
 
     @Override
-    public ArrayList<Application> getMyApplications(String name) {
+    public ArrayList<Application> getMyApplicationsByName(String applicantName) {
         ArrayList<Application> myApplications = new ArrayList<>();
         for (Application application: data.getApplications()) {
-            if(application.getApplicant().getName().equals(name)){
+            if(application.getApplicant().getName().equals(applicantName)){
+                myApplications.add(application);
+            }
+        }
+        return myApplications;
+    }
+
+    @Override
+    public ArrayList<Application> getMyApplicationsByJobName(String jobName) {
+        ArrayList<Application> myApplications = new ArrayList<>();
+        for (Application application: data.getApplications()) {
+            if(application.getJob().getJobName().equals(jobName)){
+                myApplications.add(application);
+            }
+        }
+        return myApplications;
+    }
+
+    @Override
+    public ArrayList<Application> getMyApplicationsByJobLocation(String jobLocation) {
+        ArrayList<Application> myApplications = new ArrayList<>();
+        for (Application application: data.getApplications()) {
+            if(application.getJob().getJobLocation().equals(jobLocation)){
+                myApplications.add(application);
+            }
+        }
+        return myApplications;
+    }
+
+    @Override
+    public ArrayList<Application> getMyApplicationsByCompany(String company) {
+        ArrayList<Application> myApplications = new ArrayList<>();
+        for (Application application: data.getApplications()) {
+            if(application.getJob().getCompany().equals(company)){
                 myApplications.add(application);
             }
         }
