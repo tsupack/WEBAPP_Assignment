@@ -1,0 +1,178 @@
+{
+	"info": {
+		"_postman_id": "ea58943a-e118-4add-a1ce-8074e409f22b",
+		"name": "WEBAPP_Assignment",
+		"description": "Testing requests for the created webapplication.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "applicant/listAllJobs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8082/applicant/listAllJobs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"applicant",
+						"listAllJobs"
+					]
+				},
+				"description": "Should list all the available jobs."
+			},
+			"response": []
+		},
+		{
+			"name": "applicant/listMyApplications",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<assig:job xmlns:assig=\"assignment\">\n   <assig:applicantName>Kiss_Istvan</assig:applicantName>\n</assig:job>"
+				},
+				"url": {
+					"raw": "http://localhost:8082/applicant/listMyApplications",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"applicant",
+						"listMyApplications"
+					]
+				},
+				"description": "Should list the applications for a given name"
+			},
+			"response": []
+		},
+		{
+			"name": "operator/ListAllJobs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8082/operator/listAllJobs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"operator",
+						"listAllJobs"
+					]
+				},
+				"description": "Should list all available jobs."
+			},
+			"response": []
+		},
+		{
+			"name": "operator/addjob",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<assig:job xmlns:assig=\"assignment\">\n   <assig:jobID>10</assig:jobID>\n   <assig:jobName>Vonatkerek_pumpalo</assig:jobName>\n   <assig:jobLocation>Sajokaza</assig:jobLocation>\n   <assig:jobCompany>MAV</assig:jobCompany>\n   <assig:jobDescription>Pump_those_muscles.</assig:jobDescription>\n</assig:job>"
+				},
+				"url": {
+					"raw": "http://localhost:8082/operator/addJob",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"operator",
+						"addJob"
+					]
+				},
+				"description": "Should successfully post a job to the server."
+			},
+			"response": []
+		},
+		{
+			"name": "operator/deleteJob",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8082/operator/deleteJob?id=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"operator",
+						"deleteJob"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "10"
+						}
+					]
+				},
+				"description": "Should delete a job by a given ID."
+			},
+			"response": []
+		},
+		{
+			"name": "operator/listAllApplications",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8082/operator/listAllApplications",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"operator",
+						"listAllApplications"
+					]
+				},
+				"description": "Should list all the applications."
+			},
+			"response": []
+		}
+	]
+}

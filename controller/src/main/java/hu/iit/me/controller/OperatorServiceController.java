@@ -39,7 +39,7 @@ public class OperatorServiceController {
         return DTOConverter.marshalJobList(operatorService.listJobs());
     }
 
-    @RequestMapping(value = "listAllApplications")
+    @RequestMapping(value = "listAllApplications", method = RequestMethod.GET)
     @ResponseBody
     public ArrayList<ApplicationType> listAllApplication(){return DTOConverter.marshalApplicationList(operatorService.listApplications());}
 
