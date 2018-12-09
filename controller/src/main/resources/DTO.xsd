@@ -2,14 +2,6 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            targetNamespace="assignment" xmlns="assignment" elementFormDefault="qualified">
 
-    <xs:complexType name="filterType">
-        <xs:sequence>
-            <xs:element name="name" type="xs:string" default="null"/>
-            <xs:element name="location" type="xs:string" default="null"/>
-            <xs:element name="company" type="xs:string" default="null"/>
-        </xs:sequence>
-    </xs:complexType>
-
     <xs:complexType name="applicantType">
         <xs:sequence>
             <xs:element name="applicantID" type="xs:int"/>
@@ -41,5 +33,4 @@
     <xs:element name="job" type="jobType"/>
     <xs:element name="applicant" type="applicantType"/>
     <xs:element name="application" type="applicationType"/>
-    <xs:element name="filter" type="filterType"/>
 </xs:schema>

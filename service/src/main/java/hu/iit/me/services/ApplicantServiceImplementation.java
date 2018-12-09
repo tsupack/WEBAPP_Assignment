@@ -30,21 +30,4 @@ public class ApplicantServiceImplementation implements ApplicantServiceInterface
         }
         return myApplications;
     }
-
-    @Override
-    public ArrayList<Application> getMyApplicationsBy(String name, String location, String company) {
-        ArrayList<Application> FilteredApplication = new ArrayList<>();
-        for (Application application: data.getApplications()){
-
-            if((name == null) | application.getJob().getJobName().equals(name)){
-                if((location == null) | application.getJob().getJobLocation().equals(location)){
-                    if((company == null) | application.getJob().getCompany().equals(company)){
-                        FilteredApplication.add(application);
-                    }
-                }
-            }
-
-        }
-        return FilteredApplication;
-    }
 }
