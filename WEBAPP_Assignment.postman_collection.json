@@ -58,7 +58,7 @@
 						"listMyApplicationByName"
 					]
 				},
-				"description": "Should list the applications for a given name."
+				"description": "Should list the applications by a given name."
 			},
 			"response": []
 		},
