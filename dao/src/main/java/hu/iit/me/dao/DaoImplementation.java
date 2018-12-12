@@ -26,8 +26,9 @@ public class DaoImplementation implements DaoInterface {
     private Application application_4;
 
     private boolean firstRun= true;
+    private boolean found=false;
 
-    public DaoImplementation () throws InvalidIDException, EmptyFieldException, NegativeValueException{
+    public DaoImplementation () throws InvalidIDException, InvalidInputFormatException, EmptyFieldException, NegativeValueException{
         this.jobs = new ArrayList<>();
         this.job_0 = new Job(1, "IP_technician", "Budapest", "Magyar_Telekom", "IP_Technician.");
         this.job_1 = new Job(2, "Java_Senior_developer", "Miskolc", "Evosoft", "Java_Developer.");
@@ -93,11 +94,15 @@ public class DaoImplementation implements DaoInterface {
     }
 
     @Override
-    public void deleteJob(int id){
+    public void deleteJob(int id) throws JobNotFoundException{
         for (Job job: jobs) {
             if(job.getJobID() == id){
                 jobs.remove(job);
+                found=true;
             }
+        }
+        if (!found){
+            throw new JobNotFoundException();
         }
     }
 }

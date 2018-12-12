@@ -58,7 +58,7 @@
 						"listMyApplicationByName"
 					]
 				},
-				"description": "Should list the applications by a given name."
+				"description": "Should list all applications by a given applicant name."
 			},
 			"response": []
 		},
@@ -176,7 +176,7 @@
 						"listAllJobs"
 					]
 				},
-				"description": "Should list all available jobs."
+				"description": "Should list all the available jobs."
 			},
 			"response": []
 		},
@@ -215,13 +215,19 @@
 			"name": "operator/deleteJob",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "<assig:job xmlns:assig=\"assignment\">\n   <assig:jobID>10</assig:jobID>\n</assig:job>"
 				},
 				"url": {
-					"raw": "http://localhost:8082/operator/deleteJob?id=10",
+					"raw": "http://localhost:8082/operator/deleteJob",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -230,12 +236,6 @@
 					"path": [
 						"operator",
 						"deleteJob"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "10"
-						}
 					]
 				},
 				"description": "Should delete a job by a given ID."

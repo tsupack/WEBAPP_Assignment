@@ -52,6 +52,6 @@ public class ApplicantServiceController {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(value = {EmptyFieldException.class})
-    public void exceptionHandler() {
+    public void badRequestHandler() {
     }
 }

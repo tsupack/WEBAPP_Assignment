@@ -3,6 +3,7 @@ package hu.iit.me.services;
 import hu.iit.me.dao.DaoInterface;
 import hu.iit.me.exception.EmptyFieldException;
 import hu.iit.me.exception.InvalidIDException;
+import hu.iit.me.exception.JobNotFoundException;
 import hu.iit.me.service.OperatorServiceInterface;
 import hu.iit.me.model.*;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class OperatorServiceImplementation implements OperatorServiceInterface {
     }
 
     @Override
-    public void deleteJob(int id) {
+    public void deleteJob(int id) throws JobNotFoundException {
         data.deleteJob(id);
     }
 

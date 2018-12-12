@@ -5,6 +5,7 @@ import hu.iit.me.dto.ApplicantType;
 import hu.iit.me.dto.ApplicationType;
 import hu.iit.me.exception.EmptyFieldException;
 import hu.iit.me.exception.InvalidIDException;
+import hu.iit.me.exception.InvalidInputFormatException;
 import hu.iit.me.exception.NegativeValueException;
 import hu.iit.me.model.Applicant;
 import hu.iit.me.model.Application;
@@ -46,27 +47,12 @@ public class DTOConverter {
         return jobs;
     }
 
-    public static Applicant unmarshalApplicant(ApplicantType applicantType) throws EmptyFieldException, InvalidIDException, NegativeValueException {
-        if(applicantType.getApplicantName().isEmpty() | applicantType.getApplicantEmail().isEmpty() | applicantType.getApplicantPhoneNumber().isEmpty()){
-            throw new EmptyFieldException();
-        }
-        return new Applicant(applicantType.getApplicantID(), applicantType.getApplicantName(), applicantType.getApplicantEmail(), applicantType.getApplicantPhoneNumber(), applicantType.getApplicantAge());
-    }
-
-    public static ArrayList<Applicant> unmarshalApplicantList(ArrayList<ApplicantType> applicantTypes) throws EmptyFieldException, InvalidIDException, NegativeValueException {
-        ArrayList<Applicant> applicants = new ArrayList<>();
-        for (ApplicantType applicant: applicantTypes){
-            applicants.add(DTOConverter.unmarshalApplicant(applicant));
-        }
-        return applicants;
-    }
-
     public static ApplicantType marshalApplicant(Applicant applicant){
         ApplicantType applicantType = new ApplicantType();
         applicantType.setApplicantID(applicant.getApplicantID());
         applicantType.setApplicantName(applicant.getName());
         applicantType.setApplicantEmail(applicant.getEmail());
-        applicantType.setApplicantPhoneNumber(applicant.getPhoneNumbe());
+        applicantType.setApplicantPhoneNumber(applicant.getPhoneNumber());
         applicantType.setApplicantAge(applicant.getAge());
         return applicantType;
     }
@@ -79,16 +65,19 @@ public class DTOConverter {
         return applicantTypes;
     }
 
-    public static Application unmarshalApplication(ApplicationType ApplicationType) throws EmptyFieldException, InvalidIDException, NegativeValueException {
-        return new Application(ApplicationType.getApplicationID(), DTOConverter.unmarshalApplicant(ApplicationType.getApplicant()), DTOConverter.unmarshalJob(ApplicationType.getJob()));
+    public static Applicant unmarshalApplicant(ApplicantType applicantType) throws EmptyFieldException, InvalidIDException, InvalidInputFormatException, NegativeValueException {
+        if(applicantType.getApplicantName().isEmpty() | applicantType.getApplicantEmail().isEmpty() | applicantType.getApplicantPhoneNumber().isEmpty()){
+            throw new EmptyFieldException();
+        }
+        return new Applicant(applicantType.getApplicantID(), applicantType.getApplicantName(), applicantType.getApplicantEmail(), applicantType.getApplicantPhoneNumber(), applicantType.getApplicantAge());
     }
 
-    public static ArrayList<Application> unmarshalApplicationList(ArrayList<ApplicationType> ApplicationTypes) throws EmptyFieldException, InvalidIDException, NegativeValueException {
-        ArrayList<Application> applications = new ArrayList<>();
-        for(ApplicationType applicationType : ApplicationTypes){
-            applications.add(DTOConverter.unmarshalApplication(applicationType));
+    public static ArrayList<Applicant> unmarshalApplicantList(ArrayList<ApplicantType> applicantTypes) throws EmptyFieldException, InvalidIDException, InvalidInputFormatException, NegativeValueException {
+        ArrayList<Applicant> applicants = new ArrayList<>();
+        for (ApplicantType applicant: applicantTypes){
+            applicants.add(DTOConverter.unmarshalApplicant(applicant));
         }
-        return applications;
+        return applicants;
     }
 
     public static ApplicationType marshalApplication(Application application){
@@ -105,5 +94,17 @@ public class DTOConverter {
             ApplicationTypes.add(DTOConverter.marshalApplication(application));
         }
         return ApplicationTypes;
+    }
+
+    public static Application unmarshalApplication(ApplicationType ApplicationType) throws EmptyFieldException, InvalidIDException, InvalidInputFormatException, NegativeValueException {
+        return new Application(ApplicationType.getApplicationID(), DTOConverter.unmarshalApplicant(ApplicationType.getApplicant()), DTOConverter.unmarshalJob(ApplicationType.getJob()));
+    }
+
+    public static ArrayList<Application> unmarshalApplicationList(ArrayList<ApplicationType> ApplicationTypes) throws EmptyFieldException, InvalidIDException, InvalidInputFormatException, NegativeValueException {
+        ArrayList<Application> applications = new ArrayList<>();
+        for(ApplicationType applicationType : ApplicationTypes){
+            applications.add(DTOConverter.unmarshalApplication(applicationType));
+        }
+        return applications;
     }
 }

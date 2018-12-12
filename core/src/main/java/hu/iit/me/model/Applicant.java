@@ -2,6 +2,7 @@ package hu.iit.me.model;
 
 import hu.iit.me.exception.EmptyFieldException;
 import hu.iit.me.exception.InvalidIDException;
+import hu.iit.me.exception.InvalidInputFormatException;
 import hu.iit.me.exception.NegativeValueException;
 
 public class Applicant {
@@ -11,7 +12,7 @@ public class Applicant {
     private String phoneNumber;
     private int age;
 
-    public Applicant(int applicantID, String name, String email, String phoneNumber, int age) throws InvalidIDException, EmptyFieldException, NegativeValueException{
+    public Applicant(int applicantID, String name, String email, String phoneNumber, int age) throws InvalidIDException, EmptyFieldException,InvalidInputFormatException, NegativeValueException{
         this.setApplicantID(applicantID);
         this.setName(name);
         this.setEmail(email);
@@ -45,20 +46,20 @@ public class Applicant {
         return email;
     }
 
-    public void setEmail(String email) throws EmptyFieldException{
-        if (email.equals("")){
-            throw new EmptyFieldException();
+    public void setEmail(String email) throws InvalidInputFormatException{
+        if (email.equalsIgnoreCase("[^@]+@[^\\.]+\\..+")) {
+            throw new InvalidInputFormatException();
         }
         this.email = email;
     }
 
-    public String getPhoneNumbe(){
+    public String getPhoneNumber(){
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) throws EmptyFieldException{
-        if (phoneNumber.equals("")){
-            throw new EmptyFieldException();
+    public void setPhoneNumber(String phoneNumber) throws InvalidInputFormatException {
+        if (phoneNumber.equalsIgnoreCase("'/^[0-9\\+][0-9\\-]+$/'\n")) {
+            throw new InvalidInputFormatException();
         }
         this.phoneNumber = phoneNumber;
     }
@@ -68,7 +69,7 @@ public class Applicant {
     }
 
     public void setAge(int age) throws NegativeValueException {
-        if(age<1){
+        if(age<0){
             throw new NegativeValueException();
         }
         this.age = age;
